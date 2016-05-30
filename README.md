@@ -12,6 +12,15 @@
 │   ├── development.conf      (数据库配置等)
 │   ├── logging_config.json   (日志配置文件)
 │   └── paste_config.ini      (Paste配置文件)
+├── apidoc                    (API接口文档)
+│   ├── css /...
+│   ├── img /...
+│   ├── locales /...
+│   ├── utils /...
+│   ├── vendor /...
+│   ├── api_project.json      (apidoc项目配置文件)
+│   ├── ...
+│   └── index.html
 ├── openstack                 (项目源码目录)
 │   ├── auth                  (授权请求API)
 │   │   ├── __init__.py
@@ -35,3 +44,29 @@
 └── requirements.txt          (项目包依赖)
 
 ```
+
+# API接口文档
+
+## 依赖安装
+
+1、安装[nodejs](https://nodejs.org/)
+
+> sudo apt-get install nodejs
+
+2、更改为[淘宝源](http://npm.taobao.org/)
+
+> sudo npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+3、安装[apidoc](http://apidocjs.com/)
+
+> sudo cnpm install apidoc -g
+
+## apidoc语法
+
+详见[官网](http://apidocjs.com/)(需翻墙)
+
+## 更新接口文档
+
+cd 到项目根目录
+
+> apidoc -i ./ -o apidoc/
