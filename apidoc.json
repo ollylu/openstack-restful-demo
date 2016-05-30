@@ -1,6 +1,6 @@
 {
   "name": "OpenStack Eshore module",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "apiDocs",
   "title": "OpenStack_Eshore",
   "url" : "http://127.0.0.1:8088/v1"

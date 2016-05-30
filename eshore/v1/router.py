@@ -12,6 +12,7 @@ class API(wsgi.Router):
         controller = controllers.UserController()
         """
         @api {post} /users Create New User
+        @apiVersion 0.0.1
         @apiName CreateUser
         @apiGroup User
 
@@ -27,6 +28,7 @@ class API(wsgi.Router):
                        conditions=dict(method=['POST']))
         """
         @api {get} /user/:user_id Request User information
+        @apiVersion 0.0.1
         @apiName GetUser
         @apiGroup User
 
