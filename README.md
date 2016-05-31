@@ -1,9 +1,9 @@
-# 项目框架
+# 1、项目框架
 
 ![](http://o6p181fdf.bkt.clouddn.com/16-5-27/18951712.jpg)
 
 
-# 项目目录结构
+# 2、项目目录结构
 
 
 ```
@@ -45,7 +45,7 @@
 
 ```
 
-# API接口文档
+# 3、API接口文档
 
 ## 依赖安装
 
@@ -70,3 +70,87 @@
 cd 到项目根目录
 
 > apidoc -i ./ -o apidoc/
+
+
+# 4、压力测试
+
+1. 指令:
+`ab -n 1000 -c 10 http://127.0.0.1:8088/v1/users/1`
+
+结果:
+
+```
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:
+Server Hostname:        127.0.0.1
+Server Port:            8088
+
+Document Path:          /v1/users/1
+Document Length:        23 bytes
+
+Concurrency Level:      10
+Time taken for tests:   2.917 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      150000 bytes
+HTML transferred:       23000 bytes
+Requests per second:    342.84 [#/sec] (mean)
+Time per request:       29.168 [ms] (mean)
+Time per request:       2.917 [ms] (mean, across all concurrent requests)
+Transfer rate:          50.22 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.2      0       3
+Processing:     4   29   5.3     27      58
+Waiting:        3   28   5.3     27      58
+Total:          4   29   5.3     27      59
+
+Percentage of the requests served within a certain time (ms)
+  50%     27
+  66%     29
+  75%     30
+  80%     31
+  90%     33
+  95%     36
+  98%     52
+  99%     55
+ 100%     59 (longest request)
+
+```
+
+2. 指令: `ab -n 1000 -c 100 http://127.0.0.1:8088/v1/users/1`
+
+结果:
+
+```
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+apr_socket_recv: Connection reset by peer (54)
+Total of 430 requests completed
+
+```

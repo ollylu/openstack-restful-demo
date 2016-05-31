@@ -31,9 +31,11 @@ bind_port = 8088
 def server(app_name, conf_file):
     print "server"
     app = load_paste_app(app_name, conf_file)
-    eventlet.patcher.monkey_patch(all=True)
-    pool = eventlet.GreenPool(1000)
-    wsgi.server(sock=eventlet.listen((bind_host, bind_port)), site=app, custom_pool=pool)
+    # eventlet.patcher.monkey_patch(all=True)
+    # eventlet.monkey_patch(all=True)
+    # pool = eventlet.GreenPool(1000)
+    # wsgi.server(sock=eventlet.listen((bind_host, bind_port)), site=app, custom_pool=pool)
+    wsgi.server(eventlet.listen((bind_host, bind_port)), app)
 
 
 def load_paste_app(app_name, conf_file):

@@ -10,14 +10,9 @@ class UserController(Controller):
     def create(context):
         if auth_api.check_auth():
             status = api.create_user(context)
-            if status:
-                return {
-                    "status": "OK"
-                }
-            else:
-                return {
-                    "status": 'False'
-                }
+            return {
+                "status": status
+            }
         else:
             raise exceptions.Unauthorized
 

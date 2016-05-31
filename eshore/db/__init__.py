@@ -26,6 +26,6 @@ Base.query = session.query_property()
 
 
 def init_db():
-    from eshore.db.models import *
+    from eshore.db.models import User
     Base.metadata.create_all(bind=db)
 
