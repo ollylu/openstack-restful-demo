@@ -2,6 +2,7 @@ from eshore.common.controllers import Controller
 from eshore.common import exceptions
 from eshore.db import api
 from eshore.auth import api as auth_api
+import webob.exc
 
 
 class UserController(Controller):
@@ -19,8 +20,11 @@ class UserController(Controller):
     @staticmethod
     def show(context, user_id):
         user = api.show_users(user_id)
-        return {
-            "user_name": user.name
-        }
+        if user:
+            return {
+                "user_name": user.name
+            }
+        else:
+            raise webob.exc.HTTPNotFound()
 
 

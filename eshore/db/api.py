@@ -16,7 +16,10 @@ def show_users(user_id):
     :param user_id:
     :return:
     """
-    return session.query(User).filter(User.id == user_id).one()
+    try:
+        return session.query(User).filter(User.id == user_id).one()
+    except:
+        return False
 
 
 def create_user(data):
